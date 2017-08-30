@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var topButton: UIButton!         // Has TAG = 1
     @IBOutlet weak var bottomButton: UIButton!      // Has TAG = 2
     @IBOutlet weak var storyTextView: UILabel!
+    @IBOutlet weak var restartBtn: UIButton!
     
     // TODO Step 5: Initialise instance variables here
     var storyIndex : Int = 1
@@ -40,14 +41,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // TODO Step 3: Set the text for the storyTextView, topButton, bottomButton, and to T1_Story, T1_Ans1, and T1_Ans2
-        
-        storyTextView.text = story1
-        topButton.setTitle("I\'ll hop in. Thanks for the help!", for: .normal)
-        bottomButton.setTitle("Better ask him if he\'s a murderer first.", for: .normal)
-        
-        
+        restartStory()
         
     }
 
@@ -101,7 +95,33 @@ class ViewController: UIViewController {
             topButton.isHidden = true
             bottomButton.isHidden = true
         }
+        
+        if storyIndex == 4 || storyIndex == 5 || storyIndex == 6{
+            
+            restartBtn.isHidden = false
+        }
     
+    }
+    
+    
+    @IBAction func restartButtonPressed(_ sender: UIButton) {
+        
+        restartStory()
+        
+        
+        
+    }
+    
+    func restartStory(){
+        
+        storyIndex = 1
+        restartBtn.isHidden = true
+        storyTextView.text = story1
+        topButton.setTitle("I\'ll hop in. Thanks for the help!", for: .normal)
+        topButton.isHidden = false
+        bottomButton.setTitle("Better ask him if he\'s a murderer first.", for: .normal)
+        bottomButton.isHidden  = false
+        
     }
     
     
